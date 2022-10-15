@@ -1,0 +1,15 @@
+{
+  "name": "kirby-krackle",
+  "collaborators": [
+    "Spocuto"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "kirby_krackle_bg.wasm",
+    "kirby_krackle.js",
+    "kirby_krackle.d.ts"
+  ],
+  "module": "kirby_krackle.js",
+  "types": "kirby_krackle.d.ts",
+  "sideEffects": false
+}
