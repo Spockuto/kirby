@@ -1,0 +1,48 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="column-1">
+            <div class="box">
+                <h1><b>Kirby Krackle</b></h1>
+                <form>
+                    <p>Color #1 <input type="text" class="no-outline" placeholder="#5F4B8BFF" value="#5F4B8BFF" id="color1"></p>
+                    <p>Color #2 <input type="text" class="no-outline" placeholder="#E69A8DFF" value="#E69A8DFF" id="color2"></p>
+                    <p>Regions <input type="range" min="1" max="10" value="4" step="1" class="slider" id="region"></p>
+                    <p>Density <input type="range" min="200" max="7000" value="1000" step="20" class="slider" id="density"></p>
+                    <p>Spread <input type="range" min="10" max="50" value="15" class="slider" id="spread"></p>
+                    <input type="submit" value="Generate" id="generate" />
+                </form>
+            </div>
+        </div>
+        <div class="column-2" id="canvasdiv">
+            <canvas id="canvas" height="150" width="150"></canvas>
+        </div>
+    </div>
+    <script type="module">
+        import init, {generate_canvas} from './pkg/kirby_krackle.js';
+		
+		document.getElementById("generate").addEventListener("click", function(event){
+			event.preventDefault()
+			var color1 = document.getElementById("color1").value;
+			var color2 = document.getElementById("color2").value;
+            var regions = document.getElementById("region").value;
+            var density = document.getElementById("density").value;
+            var spread = document.getElementById("spread").value;
+			run(color1, color2, regions, density, spread);
+		});
+		
+		async function run(color1, color2, regions, density, spread) {
+			await init();
+			generate_canvas(color1, color2, regions, density, spread);
+		}
+    </script>
+</body>
+
+</html>
